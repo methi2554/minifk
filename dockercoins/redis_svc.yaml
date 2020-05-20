@@ -6,7 +6,6 @@ metadata:
   name: redis
   namespace: default
 spec:
-  clusterIP: 10.111.61.172
   ports:
   - port: 6379
     protocol: TCP

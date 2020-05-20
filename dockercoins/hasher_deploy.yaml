@@ -1,4 +1,13 @@
-
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: hasher
+  name: hasher
+  namespace: default
+spec:
+  replicas: 1
+  selector:
     matchLabels:
       app: hasher
   strategy:
@@ -8,20 +17,14 @@
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: hasher
     spec:
       containers:
-      - image: maythee/hasher:v0.1
+      - image: emma2541/hasher:v0.1
         imagePullPolicy: IfNotPresent
         name: hasher
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext: {}
       terminationGracePeriodSeconds: 30
-

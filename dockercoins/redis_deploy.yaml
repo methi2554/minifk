@@ -5,10 +5,8 @@ metadata:
     app: redis
   name: redis
   namespace: default
- spec:
-  progressDeadlineSeconds: 600
+spec:
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: redis
@@ -19,7 +17,6 @@ metadata:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: redis
     spec:
@@ -27,8 +24,9 @@ metadata:
       - image: redis
         imagePullPolicy: Always
         name: redis
+        terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext: {}
       terminationGracePeriodSeconds: 30
+   
