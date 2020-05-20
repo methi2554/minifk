@@ -1,0 +1,27 @@
+
+    matchLabels:
+      app: hasher
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hasher
+    spec:
+      containers:
+      - image: maythee/hasher:v0.1
+        imagePullPolicy: IfNotPresent
+        name: hasher
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+
