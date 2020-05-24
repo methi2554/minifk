@@ -2,16 +2,14 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: team21-client
-  name: team21-client
+    app: client
+  name: client
   namespace: default
 spec:
-  progressDeadlineSeconds: 600
-  replicas: 1
-  revisionHistoryLimit: 10
+  replicas: 2
   selector:
     matchLabels:
-      app: team21-client
+      app: client
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -19,12 +17,11 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: team21-client
+        app: client
     spec:
       containers:
-      - image: maythee/team21-client
+      - image: emma2541/team21-client
         imagePullPolicy: Always
         name: team21-client
       dnsPolicy: ClusterFirst

@@ -2,17 +2,16 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: team21-backend
-  name: team21-backend
+    app: server
+  name: server
   namespace: default
 spec:
   externalTrafficPolicy: Cluster
   ports:
-  - nodePort: 31431
-    port: 9000
+  - port: 9000
     protocol: TCP
     targetPort: 9000
   selector:
-    app: team21-backend
+    app: server
   sessionAffinity: None
   type: LoadBalancer

@@ -1,17 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-labels:
-    app: team21-backend
-  name: team21-backend
+  labels:
+    app: server
+  name: server
   namespace: default
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: team21-backend
+      app: server
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -19,12 +17,11 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: team21-backend
+        app: server
     spec:
       containers:
-      - image: maythee/team21-backend
+      - image: emma2541/team21-backend
         imagePullPolicy: Always
         name: team21-backend
       dnsPolicy: ClusterFirst
