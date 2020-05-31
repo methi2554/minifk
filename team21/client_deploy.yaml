@@ -21,8 +21,8 @@ spec:
         app: client
     spec:
       containers:
-      - image: emma2541/team21-client
-        imagePullPolicy: Always
+      - image: maythee/team21-client:v0.1
+        imagePullPolicy: IfNotPresent
         name: team21-client
       dnsPolicy: ClusterFirst
       restartPolicy: Always
