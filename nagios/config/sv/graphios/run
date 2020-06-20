@@ -1,3 +1,0 @@
-#!/bin/bash
-
-su - $NAGIOS_USER -c '/usr/local/bin/graphios.py'
