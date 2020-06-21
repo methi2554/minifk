@@ -1,0 +1,63 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2020-06-21T08:14:57Z"
+  generation: 1
+  labels:
+    app: adder
+  name: adder
+  namespace: default
+  resourceVersion: "2036"
+  selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/adder
+  uid: 840d5f55-5e77-4400-a702-804dc1ec76cb
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: adder
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: adder
+    spec:
+      containers:
+      - image: chanwit/adder
+        imagePullPolicy: Always
+        name: adder
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2020-06-21T08:15:05Z"
+    lastUpdateTime: "2020-06-21T08:15:05Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2020-06-21T08:14:57Z"
+    lastUpdateTime: "2020-06-21T08:15:05Z"
+    message: ReplicaSet "adder-669b6cb68" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

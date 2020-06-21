@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2020-06-21T08:21:37Z"
+  labels:
+    app: source
+  name: source
+  namespace: default
+  resourceVersion: "2649"
+  selfLink: /api/v1/namespaces/default/services/source
+  uid: ca56bbf7-6f64-4a49-921b-3eb1e1578c58
+spec:
+  clusterIP: 10.98.117.216
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 30761
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: source
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 172.17.0.203
