@@ -1,0 +1,24 @@
+front:
+    build: front
+    ports:
+      - "8001:6060"
+
+source:
+    build: source
+    ports:
+      - "8002:6060"
+
+adder:
+    build: adder
+    links:
+    ports:
+      - "8000:6060"
+
+
+suber:
+    build: suber
+    links:
+    ports:
+      - "8004:6060"
+    
+
